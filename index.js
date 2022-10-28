@@ -46,24 +46,7 @@ function guardarLinksEnBaseDeDatos(apartamentos) {
 
 parsearUrls();
 
-
-exportToCsv = function() {
-  var CsvString = "example";
-  apartamentsLink.forEach(function(RowItem, RowIndex) {
-    RowItem.forEach(function(ColItem, ColIndex) {
-      CsvString += ColItem + ',';
-    });
-    CsvString += "\r\n";
-  });
-  CsvString = "data:application/csv," + encodeURIComponent(CsvString);
-  var x = document.createElement("A");
-  x.setAttribute("href", CsvString );
-  x.setAttribute("download","somedata.csv");
-  document.body.appendChild(x);
-  x.click();
+const getPageNumberUrl = (numberPage) => {
+  const desdeParameter =  48 * (numberPage - 1) + 1;
+  return `https://listado.mercadolibre.com.pe/inmuebles/alquiler/lima/_Desde_${desdeParameter}_NoIndex_True`;
 }
-
-exportToCsv()
-
-
-// 5
